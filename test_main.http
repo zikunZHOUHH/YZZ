@@ -1,0 +1,27 @@
+# Test your FastAPI endpoints
+
+GET http://127.0.0.1:8000/api/v1/health
+Accept: application/json
+
+###
+
+POST http://127.0.0.1:8000/api/v1/llm/chat
+Content-Type: application/json
+
+{
+  "prompt": "Explain quantum computing in simple terms",
+  "provider": "openai",
+  "model": "gpt-3.5-turbo",
+  "temperature": 0.7
+}
+
+###
+
+POST http://127.0.0.1:8000/api/v1/llm/chat
+Content-Type: application/json
+
+{
+  "prompt": "Hello DeepSeek!",
+  "provider": "deepseek",
+  "model": "deepseek-chat"
+}
