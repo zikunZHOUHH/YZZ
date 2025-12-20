@@ -1,0 +1,25 @@
+运行命令，热加载：uvicorn app.main:app --reload
+
+访问Post 路径：http://127.0.0.1:8000/api/v1/llm/chat
+            doubao-huoshan相关model:
+            body Json格式:{
+                            "prompt": "你好",
+                            "provider": "volcengine",
+                            "model": "doubao-seed-1-6-251015"
+                           }
+                           "doubao-seed-1-6-lite-251015";
+
+            DeepSeek相关model:
+                          {
+                            "id": "deepseek-chat",
+                            "object": "model",
+                            "owned_by": "deepseek"
+                          },
+                          {
+                            "id": "deepseek-reasoner", <<PostMan好像访问不了，下次可以试试流式返回>>
+                            "object": "model",
+                            "owned_by": "deepseek"
+                          }
+
+
+

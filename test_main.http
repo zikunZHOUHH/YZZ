@@ -25,3 +25,14 @@ Content-Type: application/json
   "provider": "deepseek",
   "model": "deepseek-chat"
 }
+
+###
+
+POST http://127.0.0.1:8000/api/v1/llm/chat
+Content-Type: application/json
+
+{
+  "prompt": "Hello ByteDance!",
+  "provider": "volcengine",
+  "model": "ep-20241219xxxxxx-xxxxx" 
+}

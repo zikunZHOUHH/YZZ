@@ -7,6 +7,7 @@ class LLMRequest(BaseModel):
     model: Optional[str] = None
     temperature: Optional[float] = 0.7
     max_tokens: Optional[int] = 1000
+    stream: bool = False
 
 class LLMResponse(BaseModel):
     content: str

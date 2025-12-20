@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     OPENAI_API_KEY: str | None = None
     DEEPSEEK_API_KEY: str | None = None
     ANTHROPIC_API_KEY: str | None = None
+    VOLCENGINE_API_KEY: str | None = None
     
     DEFAULT_LLM_PROVIDER: str = "openai"
     
