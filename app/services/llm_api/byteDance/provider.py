@@ -56,6 +56,20 @@ class ByteDanceProvider(LLMProvider):
         )
 
     async def generate_stream(self, request: LLMRequest) -> AsyncGenerator[str, None]:
+        """
+        Generate a streaming response using ByteDance's Ark API.
+        Executes the blocking SDK call in a separate thread to support async streaming.
+        
+        Args:
+            request (LLMRequest): The request parameters.
+            
+        Yields:
+            str: Real-time chunks of generated text content.
+            
+        Raises:
+            ValueError: If the API key or model (Endpoint ID) is missing.
+            RuntimeError: If the API call fails.
+        """
         if not self.client:
             raise ValueError("Volcengine (ByteDance) API key not configured")
             

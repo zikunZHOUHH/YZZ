@@ -8,6 +8,12 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 
 @app.get("/")
 def root():
+    """
+    Root endpoint to verify the API status.
+    
+    Returns:
+        dict: A welcome message and link to documentation.
+    """
     return {"message": "Welcome to YZZ Backend", "docs_url": "/docs"}
 
 if __name__ == "__main__":

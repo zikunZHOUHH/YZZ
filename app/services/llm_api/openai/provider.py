@@ -5,7 +5,23 @@ from openai import AsyncOpenAI
 from typing import AsyncGenerator
 
 class OpenAIProvider(LLMProvider):
+    """
+    Implementation of LLMProvider for OpenAI's API.
+    """
     async def generate(self, request: LLMRequest) -> LLMResponse:
+        """
+        Generate a complete response using OpenAI's chat completion API.
+        
+        Args:
+            request (LLMRequest): The request parameters.
+            
+        Returns:
+            LLMResponse: The response containing content and usage statistics.
+            
+        Raises:
+            ValueError: If the API key is missing.
+            RuntimeError: If the API call fails.
+        """
         api_key = settings.OPENAI_API_KEY
         if not api_key:
             raise ValueError("OpenAI API key not configured")
@@ -42,6 +58,19 @@ class OpenAIProvider(LLMProvider):
             raise RuntimeError(f"OpenAI API Error: {str(e)}")
 
     async def generate_stream(self, request: LLMRequest) -> AsyncGenerator[str, None]:
+        """
+        Generate a streaming response using OpenAI's chat completion API.
+        
+        Args:
+            request (LLMRequest): The request parameters.
+            
+        Yields:
+            str: Real-time chunks of generated text content.
+            
+        Raises:
+            ValueError: If the API key is missing.
+            RuntimeError: If the API call fails.
+        """
         api_key = settings.OPENAI_API_KEY
         if not api_key:
             raise ValueError("OpenAI API key not configured")

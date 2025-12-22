@@ -5,7 +5,23 @@ from openai import AsyncOpenAI
 from typing import AsyncGenerator
 
 class DeepSeekProvider(LLMProvider):
+    """
+    Implementation of LLMProvider for DeepSeek's API (OpenAI-compatible).
+    """
     async def generate(self, request: LLMRequest) -> LLMResponse:
+        """
+        Generate a complete response using DeepSeek's API.
+        
+        Args:
+            request (LLMRequest): The request parameters.
+            
+        Returns:
+            LLMResponse: The response containing content and usage statistics.
+            
+        Raises:
+            ValueError: If the API key is missing.
+            RuntimeError: If the API call fails.
+        """
         api_key = settings.DEEPSEEK_API_KEY
         if not api_key:
             raise ValueError("DeepSeek API key not configured")
@@ -43,6 +59,19 @@ class DeepSeekProvider(LLMProvider):
             raise RuntimeError(f"DeepSeek API Error: {str(e)}")
 
     async def generate_stream(self, request: LLMRequest) -> AsyncGenerator[str, None]:
+        """
+        Generate a streaming response using DeepSeek's API.
+        
+        Args:
+            request (LLMRequest): The request parameters.
+            
+        Yields:
+            str: Real-time chunks of generated text content.
+            
+        Raises:
+            ValueError: If the API key is missing.
+            RuntimeError: If the API call fails.
+        """
         api_key = settings.DEEPSEEK_API_KEY
         if not api_key:
             raise ValueError("DeepSeek API key not configured")

@@ -9,7 +9,17 @@ router = APIRouter()
 async def chat_completion(request: LLMRequest):
     """
     Generate chat completion using the specified or default LLM provider.
+    
     Supports both streaming and non-streaming responses based on request.stream flag.
+    
+    Args:
+        request (LLMRequest): The request object containing prompt, provider, model, etc.
+        
+    Returns:
+        LLMResponse | StreamingResponse: The generated response or a stream of tokens.
+        
+    Raises:
+        HTTPException: If the provider is invalid or an API error occurs.
     """
     try:
         service = LLMServiceFactory.get_provider(request.provider)
