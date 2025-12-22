@@ -8,18 +8,18 @@ router = APIRouter()
 @router.post("/chat")
 async def chat_completion(request: LLMRequest):
     """
-    Generate chat completion using the specified or default LLM provider.
+    使用指定或默认的 LLM 提供商生成聊天回复。
     
-    Supports both streaming and non-streaming responses based on request.stream flag.
+    根据 request.stream 标志支持流式和非流式响应。
     
     Args:
-        request (LLMRequest): The request object containing prompt, provider, model, etc.
+        request (LLMRequest): 包含提示词、提供商、模型等信息的请求对象。
         
     Returns:
-        LLMResponse | StreamingResponse: The generated response or a stream of tokens.
+        LLMResponse | StreamingResponse: 生成的响应对象或 token 流。
         
     Raises:
-        HTTPException: If the provider is invalid or an API error occurs.
+        HTTPException: 如果提供商无效或发生 API 错误。
     """
     try:
         service = LLMServiceFactory.get_provider(request.provider)

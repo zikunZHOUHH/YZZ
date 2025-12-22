@@ -6,21 +6,21 @@ from typing import AsyncGenerator
 
 class OpenAIProvider(LLMProvider):
     """
-    Implementation of LLMProvider for OpenAI's API.
+    OpenAI API 的 LLMProvider 实现。
     """
     async def generate(self, request: LLMRequest) -> LLMResponse:
         """
-        Generate a complete response using OpenAI's chat completion API.
+        使用 OpenAI 的聊天补全 API 生成完整响应。
         
         Args:
-            request (LLMRequest): The request parameters.
+            request (LLMRequest): 请求参数。
             
         Returns:
-            LLMResponse: The response containing content and usage statistics.
+            LLMResponse: 包含内容和使用统计的响应。
             
         Raises:
-            ValueError: If the API key is missing.
-            RuntimeError: If the API call fails.
+            ValueError: 如果缺少 API 密钥。
+            RuntimeError: 如果 API 调用失败。
         """
         api_key = settings.OPENAI_API_KEY
         if not api_key:
@@ -59,17 +59,17 @@ class OpenAIProvider(LLMProvider):
 
     async def generate_stream(self, request: LLMRequest) -> AsyncGenerator[str, None]:
         """
-        Generate a streaming response using OpenAI's chat completion API.
+        使用 OpenAI 的聊天补全 API 生成流式响应。
         
         Args:
-            request (LLMRequest): The request parameters.
+            request (LLMRequest): 请求参数。
             
         Yields:
-            str: Real-time chunks of generated text content.
+            str: 实时生成的文本内容分块。
             
         Raises:
-            ValueError: If the API key is missing.
-            RuntimeError: If the API call fails.
+            ValueError: 如果缺少 API 密钥。
+            RuntimeError: 如果 API 调用失败。
         """
         api_key = settings.OPENAI_API_KEY
         if not api_key:

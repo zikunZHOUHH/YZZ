@@ -22,6 +22,18 @@ class ByteDanceProvider(LLMProvider):
             self.client = None
 
     async def generate(self, request: LLMRequest) -> LLMResponse:
+        """
+        使用字节跳动的 Ark API 生成完整响应。
+        
+        Args:
+            request (LLMRequest): 请求参数。
+            
+        Returns:
+            LLMResponse: 包含内容和使用统计的响应。
+            
+        Raises:
+            ValueError: 如果缺少 API 密钥或模型（Endpoint ID）。
+        """
         if not self.client:
             raise ValueError("Volcengine (ByteDance) API key not configured")
             

@@ -6,22 +6,22 @@ from app.core.config import settings
 
 class LLMServiceFactory:
     """
-    Factory class to instantiate the appropriate LLM provider.
+    用于实例化相应 LLM 提供商的工厂类。
     """
     @staticmethod
     def get_provider(provider_name: str = None) -> LLMProvider:
         """
-        Get an instance of the specified LLM provider.
+        获取指定 LLM 提供商的实例。
         
         Args:
-            provider_name (str, optional): The name of the provider (e.g., 'openai', 'deepseek'). 
-                                           Defaults to the configured default provider.
+            provider_name (str, optional): 提供商名称（例如 'openai', 'deepseek'）。
+                                           默认为配置的默认提供商。
                                            
         Returns:
-            LLMProvider: An instance of the requested provider.
+            LLMProvider: 请求的提供商实例。
             
         Raises:
-            ValueError: If the provider name is not supported.
+            ValueError: 如果不支持该提供商名称。
         """
         provider_name = provider_name or settings.DEFAULT_LLM_PROVIDER
         

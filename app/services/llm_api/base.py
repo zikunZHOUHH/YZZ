@@ -4,31 +4,31 @@ from app.schemas.llm import LLMRequest, LLMResponse
 
 class LLMProvider(ABC):
     """
-    Abstract base class for LLM providers.
-    All specific provider implementations must inherit from this class.
+    LLM 提供商的抽象基类。
+    所有具体的提供商实现都必须继承此类。
     """
     @abstractmethod
     async def generate(self, request: LLMRequest) -> LLMResponse:
         """
-        Generate a complete response from the LLM.
+        从 LLM 生成完整的响应。
         
         Args:
-            request (LLMRequest): The request parameters.
+            request (LLMRequest): 请求参数。
             
         Returns:
-            LLMResponse: The complete generated response.
+            LLMResponse: 完整的生成响应。
         """
         pass
 
     @abstractmethod
     async def generate_stream(self, request: LLMRequest) -> AsyncGenerator[str, None]:
         """
-        Generate a streaming response from the LLM.
+        从 LLM 生成流式响应。
         
         Args:
-            request (LLMRequest): The request parameters.
+            request (LLMRequest): 请求参数。
             
         Yields:
-            str: Chunks of generated text content.
+            str: 生成的文本内容分块。
         """
         pass

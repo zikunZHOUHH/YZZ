@@ -9,10 +9,10 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 @app.get("/")
 def root():
     """
-    Root endpoint to verify the API status.
+    根端点，用于验证 API 状态。
     
     Returns:
-        dict: A welcome message and link to documentation.
+        dict: 包含欢迎信息和文档链接的字典。
     """
     return {"message": "Welcome to YZZ Backend", "docs_url": "/docs"}
 
